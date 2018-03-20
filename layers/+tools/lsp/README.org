@@ -6,9 +6,11 @@
 - [[#configuration][Configuration]]
   - [[#derived-layers][Derived layers]]
     - [[#spacemacslsp-append-jump-handlers-mode][=(spacemacs/lsp-append-jump-handlers mode)=]]
-    - [[#spacemacslsp-define-keys-for-mode-mode][=spacemacs/lsp-define-keys-for-mode mode=]]
+    - [[#spacemacslsp-bind-keys-for-mode-mode][=(spacemacs/lsp-bind-keys-for-mode mode)=]]
   - [[#variables][Variables]]
   - [[#diagnostics][Diagnostics]]
+- [[#future-additionsimprovements][Future additions/improvements]]
+  - [[#make-spacemacslsp-bindkeys-for-mode-bind-conditionally][Make =spacemacs/lsp-bind/keys-for-mode= bind conditionally]]
 
 * Description
   This layer adds support for basic language server protocol packages speaking
@@ -44,7 +46,7 @@
 *** =(spacemacs/lsp-append-jump-handlers mode)=
     Appends =lsp-ui-peek-find-definitions= to the list of jump-handlers for a given mode.
 
-*** =spacemacs/lsp-define-keys-for-mode mode=
+*** =(spacemacs/lsp-bind-keys-for-mode mode)=
     Binds keys to a number of lsp features useful for all/most modes for the given major mode.
 
     The prefix conventions suggested in spacemacs CONVENTIONS.org have been observed, where appropriate.
@@ -93,3 +95,10 @@
     references
   - =M-: completion-at-point-functions= should be =(lsp-completion-at-point)= for
     completion
+
+* Future additions/improvements
+
+** Make =spacemacs/lsp-bind/keys-for-mode= bind conditionally
+   i.e. only bind keys if the language server supports the capability (queried using =lsp-capabilities=).
+   =lsp-capabilities= uses current buffer to determine the language server, so this would probably entail adding the bindings dynamically in
+   a mode hook.
