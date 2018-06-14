@@ -39,7 +39,7 @@
       )
     ;; overlay is slow
     ;; Use https://github.com/emacs-mirror/emacs/commits/feature/noverlay
-    (cquery-use-default-rainbow-sem-highlight)
+    ;; (cquery-use-default-rainbow-sem-highlight)
     (evil-set-initial-state 'cquery-tree-mode 'emacs)
 
     (cquery/customise-lsp-ui-peek)
